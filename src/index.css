@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+input {
+    margin: 0;
+    font-style: italic;
+    font-size: 1rem;
+    font-family: revert;
+    font-size: inherit;
+    line-height: inherit;
+}
+label{
+  font-weight: 500;
+  line-height: 1rem;
+  margin-bottom: 8px;
+  color: #014376;
+}
+strong{
+ color: #014376;
+}
+.card-outer {
+    width: 70%;
+    background-color:#B7B7B7 !important;
+    margin: auto;
+}
+ @media screen and (max-width: 420px) {
+.card-outer {
+    width: 100%;
+    background-color:#B7B7B7 !important;
+    margin: auto;
+          }
+}
