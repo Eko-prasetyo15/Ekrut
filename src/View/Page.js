@@ -7,9 +7,7 @@ import Information from "../Component/Information"
 import {
     Button,
     Card,
-    Spinner
 } from 'reactstrap';
-
 
 const PageBox = () => {
     const dispatch = useDispatch()
@@ -103,7 +101,15 @@ const PageBox = () => {
     }
     return (
         <>
-            {isLoading && <Spinner/> }
+            {isLoading ? (
+                // <Card className="card-outer">
+                <div className="d-flex justify-content-center middle">
+                    <div className="spinner-border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                // </Card>
+            ) : (
                 <Card className="card-outer">
                     <div className="container py-3">
                         <Information
@@ -123,9 +129,10 @@ const PageBox = () => {
                         <Button style={{ backgroundColor: '#014376', width: '100%' }}
                             onClick={onSave}>
                             Save
-                    </Button>
+                        </Button>
                     </div>
                 </Card >
+            )}
         </>
     )
 }

@@ -1,5 +1,7 @@
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const URL = `${process.env.REACT_APP_BASE_URL}/items/users`;
 const URL_EDU = `${process.env.REACT_APP_BASE_URL}/items/education`;
@@ -66,9 +68,27 @@ export const postBasic = (data, education, experience) => {
                 }
             })
             .catch(function (error) {
+                const err = error.response.data.errors[0].message
                 console.error(error);
                 dispatch(postDataFailure(error))
+                if (error.response.status === 400) {
+                    toast.error(err, { theme: "colored" })
+                }
+                else if (error.response.status === 500) {
+                    toast.error(err, { theme: "colored"}) 
+                }
+                else if (error.response.status === 401) {
+                    toast.error(err, { theme: "colored" })
+                }
+                else if (error.response.status === 403) {
+                    toast.error(err, { theme: "colored" })
+                }
             })
+            .finally(() => {
+                setTimeout(() => {
+                    dispatch(isLoading());
+                }, 2500);
+            });
     };
 };
 export const postEducation = (data) => {
@@ -83,8 +103,21 @@ export const postEducation = (data) => {
                 dispatch(postEducationSuccess(response.data.data));
             })
             .catch(function (error) {
+                const err = error.response.data.errors[0].message
                 console.error(error);
                 dispatch(postEducationFailure(error))
+                if (error.response.status === 400) {
+                    toast.error(err, { theme: "colored" })
+                }
+                else if (error.response.status === 500) {
+                    toast.error(err, { theme: "colored" })
+                }
+                else if (error.response.status === 401) {
+                    toast.error(err, { theme: "colored" })
+                }
+                else if (error.response.status === 403) {
+                    toast.error(err, { theme: "colored" })
+                }
             })
     };
 };
@@ -109,14 +142,22 @@ export const postExperience = (experience) => {
                 }
             })
             .catch(function (error) {
+                const err = error.response.data.errors[0].message
                 console.error(error);
                 dispatch(postExperienceFailure(error))
+                if (error.response.status === 400) {
+                    toast.error(err, { theme: "colored" })
+                }
+                else if (error.response.status === 500) {
+                    toast.error(err, { theme: "colored" })
+                }
+                else if (error.response.status === 401) {
+                    toast.error(err, { theme: "colored" })
+                }
+                else if (error.response.status === 403) {
+                    toast.error(err, { theme: "colored" })
+                }
             })
-            .finally(() => {
-                setTimeout(() => {
-                    dispatch(isLoading());
-                }, 2500);
-            });
     };
 };
 

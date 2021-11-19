@@ -61,7 +61,7 @@ const Information = (props) => {
                                                 id="email"
                                                 name="email"
                                                 placeholder="Enter Your Email"
-                                                type="text"
+                                                type="email"
                                                 onChange={props.handleInputField}
                                                 value={props.inputField.email}/>
                                         </FormGroup>
